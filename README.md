@@ -1,4 +1,4 @@
-# Getting and Cleaning Data CourseProject
+# Getting and Cleaning Data Course Project
 
 ## Introduction
 The collections of files in this repository are the submission to the final assignment of 'Getting and Cleaning Data' by Olga Hartoog, created on 20-08-2017.
@@ -48,25 +48,29 @@ The collections of files in this repository are the submission to the final assi
 ## Description of files
 
 ### 1. README.md
-The purpose of this file is to explain the analysis files in a clear and understandable way. 
+The purpose of this file is to explain the analysis files in a clear and understandable way. Furthermore, a detailed description of the steps in the program is provided.
 
 ### 2. CodeBook.md
-The CodeBook is intented to guide you through the code and provides an explanation of the resulting data and choices that have been made in the tidying process.
+The CodeBook provides an explanation of the resulting data and a short description of how this results from the source data. 
 
 ### 3. run_analysis.R
 This program runs the described tidying process of the data. 
 
-In order to run this, clone this repository by the following commang in your terminal
+In order to run this piece of code, clone this repository by the following commanf in your terminal
 ```
 git clone https://github.com/ohartoog/Getting-and-Cleaning-Data.git
 ```
+Run the code in Rstudio with 
+```R
+source("run_analysis.R")
+```
+or directly from the command line
 
 ### 4. tidydata.txt
 This is the ouput of step 5 in the assignment. It is best viewed by reading in in back to R with the following command
 ```R
 data <- read.table("tidydata.txt", header = TRUE)
 ```
-
 ### Steps in the creation of the tidy data set
 Explanation of the code and choices that were made
 
@@ -85,17 +89,26 @@ The data are read in, for instance:
 activity_labels <- read.table(file="./data/UCI HAR Dataset/activity_labels.txt", sep = "",header = F)
 ```
 The following data sets are read in:
-* x_train: measurements of the training set
-* x_test: measurements of the test set
-* y_train: activity id's of the train set, assumed to be in the same row order as the x_train
-* y_test: activity id's of the test set, assumed to be in the same row order as the x_test
-* subject_train: subjects id's of the train set, assumed to be in the same row order as the x_train
-* subject_test: subjects id's of the test set, assumed to be in the same row order as the x_test
-* features: all features, assumed to be in the same order as the x_* files
-* activity_labels, a translation between and activity_id and an activity name
+
+* **x_train**: measurements of the training set
+
+* **x_test**: measurements of the test set
+
+* **y_train**: activity IDs of the train set, assumed to be in the same row order as the x_train
+
+* **y_test**: activity IDs of the test set, assumed to be in the same row order as the x_test
+
+* **subject_train**: subjects IDs of the train set, assumed to be in the same row order as the x_train
+
+* **subject_test**: subjects IDs of the test set, assumed to be in the same row order as the x_test
+
+* **features**: all features, assumed to be in the same column order as the x_* files
+
+* **activity_labels**, a translation between and activity_id and an activity name
+
 
 #### 2. Appropriately labeling the data set with descriptive variable names 
-Names of the features are extracted, and immediately made more desriptive (for the ones that we will use in the end)
+Names of the features are extracted, and a more descriptive version is produced (for the ones that we will use in the end)
 ```R
 features_vector <- as.vector(features$V2)
 
@@ -104,6 +117,7 @@ features_vector_descriptive <- gsub("^f","Frequency",features_vector_descriptive
 features_vector_descriptive <- gsub("BodyAcc","BodyAcceleration",features_vector_descriptive)
 features_vector_descriptive <- gsub("GravAcc","GravityAcceleration",features_vector_descriptive)
 features_vector_descriptive <- gsub("GravityAcc","GravityAcceleration",features_vector_descriptive)
+features_vector_descriptive <- gsub("BodyBody","Body",features_vector_descriptive)
 features_vector_descriptive <- gsub("Gyro","Gyroscope",features_vector_descriptive)
 features_vector_descriptive <- gsub("Mag","Magnitude",features_vector_descriptive)
 features_vector_descriptive <- gsub("-mean\\(\\)","MeanValue",features_vector_descriptive)
@@ -117,7 +131,7 @@ The (partly) descriptive column names are applied to the measurements sets
 colnames(x_train) <- features_vector_descriptive
 colnames(x_test)  <- features_vector_descriptive
 ```
-Descriptive column names are also added to the other tables. Colums that will be used to merge on later are given the same name.
+Descriptive column names are also added to the other tables. Colums that will be used to merge on later are given the same name
 ```R
 colnames(activity_labels)   <- c("activity_label","Activity")
 colnames(y_train)           <- c("activity_label")
@@ -141,7 +155,7 @@ Note: It could be debated that other variables should be included in the means a
 #### 3. Using descriptive activity names to name the activities in the data set
 The activity IDs and subject IDs are added to the test and train sets, and activity discriptions are added with merge(). 
 
-Note: Merge reorders data frames, but since we have already added all information, this is not a problem.
+Note: Merge() reorders data frames, but since we have already added all information, this is not a problem.
 ```R
 data_train <- cbind(subject_train,y_train,x_train)
 data_train <- merge(data_train,activity_labels)
@@ -155,7 +169,7 @@ data_train_select <- select(data_train,SubjectID,Group,Activity,3:69)
 Step 3 and 4 are carried out with the group of test set data frames in a similar fashion.
 
 #### 5. Merge the training and the test sets to create one data set 
-Then the train and test data sets, that have exactly the same columns, are combined with rbind().
+Then the train and test data sets, that have exactly the same columns, are combined with rbind()
 
 ```R
 data_tidy <- rbind(data_train_select,data_test_select)
@@ -173,7 +187,7 @@ The resulting data set is tidy:
 
 #### 6. From the data set in step 4, creation of a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-The group_by() function from the package 'dplyr' is used to identify what are the columns that are not to be averaged, but stay as columns in the result.
+The group_by() function from the package 'dplyr' is used to identify what are the columns that are not to be averaged, but stay as columns in the result
 ```R
 data_groups           <- group_by(data_tidy,SubjectID,Activity)
 ```
@@ -187,6 +201,10 @@ columns               <- names(data_groups)[-(1:2)]
 newcolumns            <- paste(columns,".Mean",sep='')
 colnames(data_means)  <- union(colnames(data_means)[1:2],newcolumns)
 
+```
+The new data set is exported
+```R
+write.table(data_means,"tidydata.txt")
 ```
 
 

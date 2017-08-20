@@ -38,6 +38,7 @@ features_vector_descriptive <- gsub("^f","Frequency",features_vector_descriptive
 features_vector_descriptive <- gsub("BodyAcc","BodyAcceleration",features_vector_descriptive)
 features_vector_descriptive <- gsub("GravAcc","GravityAcceleration",features_vector_descriptive)
 features_vector_descriptive <- gsub("GravityAcc","GravityAcceleration",features_vector_descriptive)
+features_vector_descriptive <- gsub("BodyBody","Body",features_vector_descriptive)
 features_vector_descriptive <- gsub("Gyro","Gyroscope",features_vector_descriptive)
 features_vector_descriptive <- gsub("Mag","Magnitude",features_vector_descriptive)
 features_vector_descriptive <- gsub("-mean\\(\\)","MeanValue",features_vector_descriptive)
