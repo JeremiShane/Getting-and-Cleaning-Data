@@ -37,10 +37,16 @@ The purpose of this file is to explain the analysis files in a clear and underst
 ## 2. CodeBook.md
 The CodeBook is intented to guide you through the code and provides an explanation of the resulting data and choices that have been made in the tidying process.
 
-## run_analysis.R
+## 3. run_analysis.R
 This program runs the described tidying process of the data. 
 
 In order to run this, clone this repository by the following commang in your terminal
 ```
 git clone https://github.com/ohartoog/Getting-and-Cleaning-Data.git
+```
+
+## 4. tidydata.txt
+This is the ouput of step 5 in the assignment. It is best viewed by reading in in back to R with the following command
+```
+data <- read.table("tidydata.txt", header = TRUE) #if they used some other way of saving the file than a default write.table, this step will be differentView(data)
 ```
