@@ -1,5 +1,6 @@
 # Getting-and-Cleaning-Data
 Final assignment for Coursera course Getting ad Cleaning data
+
 Olga Hartoog 
 20-08-2017
 
