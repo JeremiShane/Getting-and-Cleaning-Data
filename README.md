@@ -1,7 +1,7 @@
 # Getting-and-Cleaning-Data
 
 ## Introduction
-THe collections of files in front of you are the submission to the final assignment of 'Getting and Cleaning Data' by Olga Hartoog, created on 20-08-2017.
+The collections of files in this repository are the submission to the final assignment of 'Getting and Cleaning Data' by Olga Hartoog, created on 20-08-2017.
 
 ## Contents
 1. README.md (this file)
