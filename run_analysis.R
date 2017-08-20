@@ -1,6 +1,7 @@
 ## Created by: Olga Hartoog
 ## 20-08-2017
 ## Getting and Cleaning data - Assignment
+## Description: Tyding up the dataset. For a detailed description, see the README and the CodeBook
 
 # load packages
 library(dplyr)
