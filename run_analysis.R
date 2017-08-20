@@ -1,8 +1,9 @@
 ## Created by: Olga Hartoog
-## 12-08-2017
+## 20-08-2017
 ## Getting and Cleaning data - Assignment
-library(dplyr)
 
+# load packages
+library(dplyr)
 
 # download the data unless already present
 tmp <- tempfile()
@@ -67,43 +68,31 @@ x_test  <- x_test[,c]
 data_train <- cbind(subject_train,y_train,x_train)
 # merge the descriptions of the activities (reordering is no problem)
 data_train <- merge(data_train,activity_labels)
-# add a column to indicate the origin (the experiment group)
-data_train$Group <- "train"
 # reorder columns and leave the activity label out
-data_train_select <- select(data_train,SubjectID,Group,Activity,3:69)
+data_train_select <- select(data_train,SubjectID,Activity,3:69)
 
 # add the activities and subjectIDs columns to x_test
 data_test <- cbind(subject_test,y_test,x_test)
 # merge the descriptions of the activities (reordering is no problem)
 data_test <- merge(data_test,activity_labels)
-# add a column to indicate the origin (the experiment group)
-data_test$Group <- "test"
 # reorder columns and leave the activity label out
-data_test_select <- select(data_test,SubjectID,Group,Activity,3:69)
-
+data_test_select <- select(data_test,SubjectID,Activity,3:69)
 
 
 # combine the two data sets
 data_tidy <- rbind(data_train_select,data_test_select)
 
+
 # make the second data set
 # group to identify with columns should not me averages, but act as the group by
 data_groups <- group_by(data_tidy,SubjectID,Activity)
-
 # now calculte means of all remaining columns
-# this piece of code is based on mnel's answer to a question on Stckoverflow
-#'https://stackoverflow.com/questions/21295936/can-dplyr-summarise-over-several-variables-without-listing-each-one'
-# make an array of all columns that need to be averaged
-columns <- names(data_groups)[-(1:3)]
-# make a list (flist) that has 66 items with named like the variable, and a value that is a string "mean(variable)"
-flist <- sapply(columns ,function(x) substitute(mean(x), list(x=as.name(x))))
-# call summarize with help of the list to get the desired answer
-data_means <- do.call(summarize, c(list(.data=data_groups), flist))
-# make the vcolumns names more descriptive by adding _Mean
-newcolumns <- paste(columns,"_Mean",sep='')
+data_means <- summarize_all(data_groups,mean,na.rm=TRUE)
+# create descriptive column names
+columns <- names(data_groups)[-(1:2)]
+newcolumns <- paste(columns,".Mean",sep='')
 # add thenew column names to the data_means
 colnames(data_means) <- union(colnames(data_means)[1:2],newcolumns)
 
 # write data to same folder as the script      
 write.table(data_means,"tidydata.txt")
-
