@@ -80,12 +80,12 @@ The resulting data set has 180 rows and 68 columns. We have 30 subjects who each
 |		60 |FrequencyBodyGyroscopeStandardDeviationZdirection.Mean	|	The mean of the standard deviations of the angular velocity in the Z direction measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
 |		61 |FrequencyBodyAccelerationMagnitudeMeanValue.Mean	|	The mean of the means of the magnitude of the body acceleration signal obtained by subtracting the gravity from the total acceleration (frequency domain)	|	Numeric	|	Frequency	|	Body	|
 |		62 |FrequencyBodyAccelerationMagnitudeStandardDeviation.Mean	|	The mean of the standard deviation of the magnitude of the body acceleration signal obtained by subtracting the gravity from the total acceleration (frequency domain)	|	Numeric	|	Frequency	|	Body	|
-|		63 |FrequencyBodyBodyAccelerationJerkMagnitudeMeanValue.Mean	|	The mean of the means of the magnitude of the body jerk signal obtained by subtracting the gravity from the total jerk (frequency domain)	|	Numeric	|	Frequency	|	Body	|
-|		64 |FrequencyBodyBodyAccelerationJerkMagnitudeStandardDeviation.Mean	|	The mean of the standard deviation of the magnitude of the body jerk signal obtained by subtracting the gravity from the total jerk (frequency domain)	|	Numeric	|	Frequency	|	Body	|
-|		65 |FrequencyBodyBodyGyroscopeMagnitudeMeanValue.Mean	|	The mean of the means of the magnitude of the angular velocity vector measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
-|		66 |FrequencyBodyBodyGyroscopeMagnitudeStandardDeviation.Mean	|	The mean of the standard deviations of the magnitude of the angular velocity vector measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
-|		67 |FrequencyBodyBodyGyroscopeJerkMagnitudeMeanValue.Mean	|	The mean of the means of the jerk measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
-|		68 |FrequencyBodyBodyGyroscopeJerkMagnitudeStandardDeviation.Mean	|	The mean of the standard deviations of the magnitude of the jerk measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
+|		63 |FrequencyBodyAccelerationJerkMagnitudeMeanValue.Mean	|	The mean of the means of the magnitude of the body jerk signal obtained by subtracting the gravity from the total jerk (frequency domain)	|	Numeric	|	Frequency	|	Body	|
+|		64 |FrequencyBodyAccelerationJerkMagnitudeStandardDeviation.Mean	|	The mean of the standard deviation of the magnitude of the body jerk signal obtained by subtracting the gravity from the total jerk (frequency domain)	|	Numeric	|	Frequency	|	Body	|
+|		65 |FrequencyBodyGyroscopeMagnitudeMeanValue.Mean	|	The mean of the means of the magnitude of the angular velocity vector measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
+|		66 |FrequencyBodyGyroscopeMagnitudeStandardDeviation.Mean	|	The mean of the standard deviations of the magnitude of the angular velocity vector measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
+|		67 |FrequencyBodyGyroscopeJerkMagnitudeMeanValue.Mean	|	The mean of the means of the jerk measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
+|		68 |FrequencyBodyGyroscopeJerkMagnitudeStandardDeviation.Mean	|	The mean of the standard deviations of the magnitude of the jerk measured by the gyroscope for each window sample (frequency domain)	|	Numeric	|	Frequency	|	Body	|
 
 
 # Licence
