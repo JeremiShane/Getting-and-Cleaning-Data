@@ -96,4 +96,4 @@ newcolumns <- paste(columns,".Mean",sep='')
 colnames(data_means) <- union(colnames(data_means)[1:2],newcolumns)
 
 # write data to same folder as the script      
-write.table(data_means,"tidydata.txt")
+write.table(data_means,"tidydata.txt",row.names=FALSE)

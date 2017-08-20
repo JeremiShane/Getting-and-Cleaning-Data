@@ -204,7 +204,7 @@ colnames(data_means)  <- union(colnames(data_means)[1:2],newcolumns)
 ```
 The new data set is exported
 ```R
-write.table(data_means,"tidydata.txt")
+write.table(data_means,"tidydata.txt",row.names=FALSE))
 ```
 
 
